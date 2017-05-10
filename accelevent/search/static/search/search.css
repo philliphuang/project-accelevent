@@ -1,0 +1,50 @@
+.result {
+    border-style: solid;
+    border-width: 0.3em;
+    border-color: rgba(0,0,0,0.5);
+}
+
+.registered {
+    border-style: solid;
+    border-width: 0.3em;
+    border-color: rgb(0,204,0);
+}
+
+.verified {
+    color: rgb(0,204,0);
+    font-weight: bold;
+}
+
+.cart-item {
+    padding: 0.25em;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+#cart {
+    background-color: white;
+    box-shadow: 0em 0.025em 0.1em rgba(0,0,0,0.5);
+    position: fixed;
+    border-bottom-right-radius:2.5em;
+    border-bottom-left-radius:2.5em;
+    width: 380px;
+}
+
+#cart-header {
+    background-color: grey;
+}
+
+#checkout-button {
+    margin: auto;
+    display: block;
+    border-bottom-right-radius:2.5em;
+    border-bottom-left-radius:2.5em;
+}
+
+#cart h1 {
+    text-align: center;
+    color: white;
+    text-shadow: 0.05em 0.05em 0.1em rgba(0,0,0,0.5);
+    font-family: Lobster;
+    margin-top: 0.5em;
+}

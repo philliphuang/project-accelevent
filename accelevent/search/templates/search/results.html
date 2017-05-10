@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="col-md-8 glass">
+        <h1>Search Results</h1>
+        {% if inputQuery %}
+        {% for result in result_list %}
+        <div class="row whitebox result {% if result.additional_info %}registered{% endif %}">
+            <div class="col-md-10"> 
+                <h4>{{ result.name }}</h4>
+                <p>
+                {% if result.rating %}
+                <strong>Google Rating: </strong> {{ result.rating }} / 5
+                {% endif %}
+                
+                {% if result.price_level %}
+                <strong>Price Level:</strong> {{ result.price_level }} / 4
+                {% endif %}
+                
+                {% if result.additional_info %}
+                    <br>
+                {{ result.additional_info }}
+                {% endif %}
+                </p>
+            </div>
+
+            <div class="col-md-2">
+                <div class="row text-center">
+                    <div class="btn-group" role="group" aria-label="...">
+                        <a href="{% url 'vendors:vendor_detail' pk=result.pk %}" onclick="
+                           this.addEventListener('click', clickStopper, false);" 
+                           type="button" class="btn btn-default push">
+                            <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                        </a>
+                        <a href="{% url 'customers:add_cart' pk=result.pk %}" 
+                           type="button" class="btn btn-default push"> 
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                </div>
+                {% if result.additional_info %}
+                <div class="text-center verified row roomy">Verified</div>
+                {% endif %}
+            </div>
+    
+        </div>
+        {% endfor %}  
+        {% endif %}
+    
+    </div>
+    
+    <!-- The Shopping Cart is not mobile optimized! -->
+    <div class="col-md-4">
+        <div id="cart">
+            <div id="cart-header">
+                <h1>Your Event</h1>
+            </div>
+            {% for item in cart_list %}
+            <div class="row cart-item">
+                <div class="col-md-8"> 
+                    <h5>{{ item.name }}</h5>
+                </div>
+                <div class="col-md-4">
+                    <div class="btn-group pull-right" role="group" aria-label="...">
+                        <a href="{% url 'vendors:vendor_detail' pk=item.pk %}" 
+                           onclick="this.addEventListener('click', clickStopper, false);" 
+                           type="button" class="btn btn-default push">
+                            <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                        </a>
+                        <a href="{% url 'customers:remove_cart' pk=item.pk %}" 
+                           onclick="this.addEventListener('click', clickStopper, false);" 
+                           type="button" class="btn btn-default push"> 
+                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %} 
+            <a href="{% url 'checkout:checkout' %}" class="btn btn-success" id="checkout-button" role="button">Checkout</a>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+

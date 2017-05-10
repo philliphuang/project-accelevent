@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="col-md-12 glass">
+        <a href="javascript:history.back()" class="btn btn-default">BACK</a>
+        {% for result in cart_list %}
+        <div class="row whitebox">
+            <div class="col-md-10"> 
+                <h5>{{ result.name }}</h5>
+            </div>
+            <div class="col-md-2">
+                 <div class="row text-center">
+                    <div class="btn-group pull-right" role="group" aria-label="...">
+                        <a href="{% url 'vendors:vendor_detail' pk=result.pk %}" onclick="
+                           this.addEventListener('click', clickStopper, false);" 
+                           type="button" class="btn btn-default push">
+                            <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                        </a>
+                        <a href="{% url 'customers:remove_cart' pk=result.pk %}" 
+                           type="button" class="btn btn-default push"> 
+                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %} 
+    </div>
+</div>
+{% endblock content %}

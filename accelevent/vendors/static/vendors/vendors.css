@@ -1,0 +1,23 @@
+#login-header{
+    background-color:grey;
+    padding:1em;
+    text-align:center;
+}
+
+#login-content{
+    padding:2em;
+}
+
+#login-button{
+    position: absolute;
+    top: 80%;
+    left:38%;
+}
+
+.login-row{
+    margin-top:10em;
+}
+
+.wrapper{
+    text-align:center
+}

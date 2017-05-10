@@ -1,0 +1,18 @@
+.crush {
+    margin-bottom: 0em;
+}
+
+.push {
+    margin-top: 0.2em;
+}
+
+.roomy {
+    padding: 1em;
+}
+
+/* centers images and other stuff text-align doesn't work on */
+.img-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

@@ -1,0 +1,89 @@
+{% load staticfiles %}
+
+<html lang="en">
+    <head>
+        <!-- General Config -->
+        <title>Accelevent</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!-- Bootstrap 3.0 -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="{% static 'base/base.css' %}">
+        <link rel="stylesheet" href="{% static 'home/home.css' %}">
+        <link rel="stylesheet" href="{% static 'search/search.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/vendors.css' %}">
+        
+        <link rel="stylesheet" href="{% static 'base/tweaks.css' %}">
+        <!-- Lobster Font -->
+        <link href="http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    </head>
+    
+    <body>
+            <!-- Navbar -->
+            <nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container">
+                    
+                    <!-- Header and Logo -->
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="{% url 'home:home' %}">Project Accelevent <mark>v0.4 Final</mark></a>
+                    </div>
+
+                    <ul class="nav navbar-nav">
+                        
+                        <!-- "active" class indicates active page by making button look "pressed" -->
+                        
+                        <!-- Sign Up or Edit Vendor Listing -->
+                        {% if user.is_authenticated %}
+                        <li {% if request.get_full_path = "/vendors/list" %} class="active" {% endif %}>
+                            <a href="{% url 'vendors:vendor_list' %}">Edit My Listings</a>
+                        </li>
+                        {% else %}
+                        <li {% if request.get_full_path = "/vendors/search" %} class="active" {% endif %}>
+                            <a href="{% url 'vendors:vendor_search' %}">Vendor Sign Up</a>
+                        </li>
+                        {% endif %}
+
+                        <!-- Login or Logout -->
+                        {% if user.is_authenticated %}
+                        <li>
+                            <a href="{% url 'vendors:logout' %}">Logout</a>
+                        </li>  
+                        {% else %}
+                        <li {% if request.get_full_path = "/vendors/vendor_login" %} class="active" {% endif %}>
+                            <a href="{% url 'vendors:vendor_login' %}">Login</a>
+                        </li>   
+                        {% endif %}
+                        
+                    </ul>    
+                    
+                    <!-- Search Bar -->
+                    <form method="GET" action="{% url 'search:results' %}" class="navbar-form navbar-right">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input name="inputQuery" type="text" maxlength="200" placeholder="Search" class="form-control" {% if inputQuery %} value="{{inputQuery}}" {% endif %}>
+                        </div>
+                    </form>
+                    
+                </div>
+            </nav>
+        
+        <!-- renders rest of body with Django templating engine -->
+        <div id="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+      
+        <!-- Protects against double-clicking bug/exploit -->
+        <script type="text/javascript">
+            function clickStopper(e)
+              {
+                e.preventDefault(); // equivalent to 'return false'
+              }
+        </script>
+    </body>
+</html>

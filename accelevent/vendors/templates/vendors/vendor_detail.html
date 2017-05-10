@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="glass">
+        <div class="row">
+            <h1>{{ name }}</h1>
+            <div class="col-md-6">
+                <h2>Information</h2>
+                
+                {% if object.additional_info %}
+                <div class="whitebox row">
+                    <div class="col-md-12 roomy">
+                        <blockquote>
+                        {{ object.additional_info }}
+                        </blockquote>
+                    </div>
+                </div>
+                {% endif %}
+                
+                <div class="whitebox row">
+                    <div class="col-md-2 roomy">
+                        <img src="{{ icon }}" alt="Google Places Icon" height="32" width="32" class="img-center">
+                    </div>
+                    <div class="col-md-10 roomy">
+                        <ul>
+                            <li><strong>Address:</strong> {{ address }}</li>
+                            <li><strong>Phone:</strong> {{ phone }}</li>
+                            <li><strong>Website:</strong> <a href="{{ website }}">{{ website }}</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                {% if weekday_text %}
+                <div class="whitebox row">
+                    <div class="col-md-2">
+                        <h3>Hours</h3>
+                    </div>
+                    <div class="col-md-10 roomy">
+                        {% if open_now %}
+                        <h4>Open Now!</h4>
+                        {% endif %}
+                        <ul>
+                        {% for day in weekday_text %}
+                            <li> {{ day }} </li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                {% endif %}
+                
+                {% if photos %}
+                <h2>Photos</h2>
+                    <div class="whitebox row"> 
+                        <div class="col-md-12 roomy">
+                            {% for photo in photos %}
+                            <img src="{{ photo }}" alt="Google Photo" width="100%" class="img-center">
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+
+            </div>
+            <div class="col-md-6">
+
+                <h2>Reviews</h2>
+                
+                {% if review_list %}
+                <div class="row whitebox text-center">
+                    <h3><strong>Overall:</strong> {{ rating }} / 5</h3>
+                    <p><strong>Price Level: </strong> {{ price_level }} / 4</p>
+                </div>
+                
+                {% for review in review_list %}
+                <div class="whitebox row">
+                    <div class="col-md-12">
+                        <h4>{{ review.author }}</h4>
+                    </div>
+
+                    <div class="col-md-2 roomy">
+                        <p>{{ review.rating }} / 5</p>
+                    </div>
+                    <div class="col-md-10 roomy">
+                        <p>{{review.text}}</p>
+                    </div>
+                </div>
+                {% endfor %}
+                
+                {% else %}
+                <div class="row whitebox text-center">
+                    <div class="col-md-12 roomy">
+                        <h4>No Reviews Available</h4>
+                    </div>
+                </div>
+                {% endif %}
+                
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

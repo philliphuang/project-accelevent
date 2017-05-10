@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron superbox glass">
+    <div class="container">
+        <h1>Plan the World's Greatest Event</h1>
+        <form method="GET" action="{% url 'search:results' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <input name="inputQuery" type="text" maxlength="200" id="supersearch" autocomplete="off">
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

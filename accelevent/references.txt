@@ -1,0 +1,73 @@
+---------- ACCOUNTS ----------
+Django admin
+user: admin
+pass: ilovepizza123
+
+user: test1
+pass: 1234
+
+PostgreSQL
+user: postgres
+pass: ilovepizza123
+---------- LINKS ----------
+
+Reusable-app abstraction:
+    "Do one thing and do it well"
+    Conventions for app file management: http://django-reusable-app-docs.readthedocs.org/en/latest/
+    Useful talk: https://www.youtube.com/watch?v=A-S0tqpPga4
+        Slides for the talk: http://media.b-list.org/presentations/2008/djangocon/reusable_apps.pdf
+
+Model: 
+    Associations between models
+        http://stackoverflow.com/questions/3113885/difference-between-one-to-many-many-to-one-and-many-to-many
+        https://docs.djangoproject.com/en/1.8/topics/db/examples/one_to_one/
+        https://docs.djangoproject.com/en/1.8/topics/db/examples/many_to_one/
+        https://docs.djangoproject.com/en/1.8/topics/db/examples/many_to_many/
+    One to One vs ForeignKey
+        http://stackoverflow.com/questions/6963252/onetoone-relation-with-the-user-model-django-contrib-auth-without-cascading-de
+        http://stackoverflow.com/questions/3955093/django-return-none-from-onetoonefield-if-related-object-doesnt-exist
+
+View:
+    Cookies
+        https://groups.google.com/forum/#!topic/django-users/FndPyZ6PoTg
+        http://stackoverflow.com/questions/10641142/django-how-to-access-session-key-in-middleware
+        https://docs.djangoproject.com/en/1.8/topics/http/sessions/
+        http://stackoverflow.com/questions/13938805/django-storing-anonymous-user-data
+        http://stackoverflow.com/questions/5130639/django-setting-a-session-and-getting-session-key-in-same-view
+        http://stackoverflow.com/questions/1512059/django-get-an-object-form-the-db-or-none-if-nothing-matches
+        http://gavinballard.com/associating-django-users-sessions/
+    Load JSON
+        https://groups.google.com/forum/#!topic/django-users/xa7D153Hokc
+    Class based views
+        http://stackoverflow.com/questions/8133505/django-templateview-and-form
+        http://www.gregaker.net/2012/apr/19/how-do-django-class-based-views-work/
+    Chain separate querysets
+        http://stackoverflow.com/questions/431628/how-to-combine-2-or-more-querysets-in-a-django-view
+    Super
+        http://www.cafepy.com/article/python_attributes_and_methods/python_attributes_and_methods.html#method-resolution-order
+    Mixin
+        http://stackoverflow.com/questions/11243977/how-to-access-object-within-class-based-views-mixin
+    Password Hashing
+        http://www.tangowithdjango.com/book17/chapters/login.html
+
+Template:
+    Prevent Double Button Click
+        http://www.the-art-of-web.com/javascript/doublesubmit/
+
+PostGreSQL:
+    http://inventtheweb.blogspot.com/2012/05/install-postgresql-for-django.html
+    http://matthewwittering.com/blog/how-to-migrating-the-database-engine-for-django.html
+
+URL: 
+    User Accounts
+        http://www.djangobook.com/en/2.0/chapter14.html
+        
+Testing:
+    Excellent guide using some third party tools:
+        https://realpython.com/blog/python/testing-in-django-part-1-best-practices-and-examples/
+    Basics on View testing:
+        http://django-testing-docs.readthedocs.org/en/latest/views.html
+
+    http://blog.celerity.com/how-to-write-speedy-unit-tests-in-django-part-1-the-basics
+    http://jeanphix.me/2012/01/20/django-real-world-functional-testing/
+    http://tech.novapost.fr/django-unit-test-your-views-en.html

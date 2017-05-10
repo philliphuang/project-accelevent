@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="col-md-12 glass">
+        <h1>Find your business in our automated listings</h1>
+        <form method="GET" action="{% url 'vendors:vendor_search' %}" class="post-form whitebox roomy">
+            {% csrf_token %}
+            <div class="form-group crush">
+                <input name="inputQuery" type="text" maxlength="200" placeholder="Search" class="form-control" {% if inputQuery %} value="{{inputQuery}}" {% endif %}>
+            </div>
+        </form>
+        {% if inputQuery %}
+        {% for result in result_list %}
+        <div class="row whitebox">
+            <div class="col-md-10"> 
+                <a href="{% url 'vendors:vendor_signup' pk=result.pk %}"><h5>{{ result.name }}</h5></a>
+            </div>
+        </div>
+        {% endfor %} 
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}
